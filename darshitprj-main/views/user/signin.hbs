@@ -1,0 +1,89 @@
+ 
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand text-danger">E-Farming Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+   
+            </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mj "  >
+   
+      <li >
+
+          <li class="nav-item active">
+             <a class="nav-link" href="/admin/login">Admin Account</a>
+          </li>          
+
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-user"></i> User Accounts
+          </a>
+
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {{#if login}}
+               <a class="dropdown-item" href="/user/profile">User Account</a>
+              <a class="dropdown-item" href="/user/logout">Logout</a>
+            {{else}}
+              <a class="dropdown-item" href="/user/signin">signin</a>
+              <a class="dropdown-item" href="/user/signup">signup</a>
+            {{/if}}
+            
+      </li>
+      <li><a href="/cart" class="nav-link text-dark"> <i class="fas fa-shopping-cart text-dark"> </i> Shoping Cart <span class="badge badge-dark">{{session.cart.totalQty}}</span></a>
+      </li>
+    </ul>
+    </form>
+  </div>
+</nav>
+
+<div class="row " style="min-height: 70vh;">
+
+
+
+
+    <div class="col-md-4   my-auto mx-auto  ">
+        <div class="row  ">
+            <h1 class="text-center">Singn In</h1>
+        </div>
+        {{#if msg}}
+        <div class="row justify-content-center  mr-2 ml-2">
+
+            <div class="alert alert-danger col-md-12" role="alert">
+               {{msg}}
+            </div>
+
+        </div>
+        {{/if}}
+
+        <form action="/user/signin" method="POST" class="mt-2">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+
+                <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            </div>
+
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div><button type="submit" class="btn btn-primary  ">signin</button></div>
+            <p>Dont have acount? <a href="/user/signup">Create a new account</p>
+        </form>
+
+    </div>
+</div>

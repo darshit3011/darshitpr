@@ -1,0 +1,116 @@
+ 
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand text-danger">E-Farming Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+   
+            </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mj "  >
+   
+      <li >
+
+          <li class="nav-item active">
+             <a class="nav-link" href="/admin/login">Admin Account</a>
+          </li>          
+
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-user"></i> User Accounts
+          </a>
+
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {{#if login}}
+               <a class="dropdown-item" href="/user/profile">User Account</a>
+              <a class="dropdown-item" href="/user/logout">Logout</a>
+            {{else}}
+              <a class="dropdown-item" href="/user/signin">signin</a>
+              <a class="dropdown-item" href="/user/signup">signup</a>
+            {{/if}}
+            
+      </li>
+      <li><a href="/cart" class="nav-link text-dark"> <i class="fas fa-shopping-cart text-dark"> </i> Shoping Cart <span class="badge badge-dark">{{session.cart.totalQty}}</span></a>
+      </li>
+    </ul>
+    </form>
+  </div>
+</nav>
+
+{{!--
+<script src="https://checkout.stripe.com/checkout.js" defer></script>
+<script>
+
+</script>
+<script src="store.js" defer></script>
+
+ --}}
+
+
+<script>
+  var csrf = "{{csrf}}";
+  var user = "{{user._id}}";
+
+
+</script>
+
+
+<head>
+  <meta charset="utf-8" />
+  <title>Accept a card payment</title>
+  <meta name="description" content="A demo of a card payment on Stripe" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="css/global.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+  <script src="js/client.js"></script>
+</head>
+
+
+
+<!-- Display a payment form -->
+<div class="row justify-content-center " style="margin-top: 70px;">
+   
+  <form class="forms mt-5" id="payment-form">
+    <div class="row justify-content-center">
+     <h1>PAY {{tprice}}</h1>
+     </div>
+    <input type="hidden" required name="_csrf" value="{{csrf}}">
+
+    <input type="text" id="name" required Placeholder="Name of Acount holder" />
+
+     <input type="number" min="1000000000"  max="9999999999" id="contact" required Placeholder="Valid Mobile No" />
+
+    <div class="form-group">
+      <textarea class="form-control" required id="address"  placeholder="Address should be contain State City and Pincode&#13;&#10;Invalid Address cause order cancallation" rows="3"></textarea>
+    </div>
+
+    <div id="card-element">
+      <!--Stripe.js injects the Card Element-->
+    </div>
+
+    <button id="submit">
+      <div class="spinner hidden" id="spinner"></div>
+      <span id="button-text">Pay now</span>
+    </button>
+
+    <p id="card-error" role="alert"></p>
+
+    <p class="result-message hidden">
+      Payment succeeded, see the result in your
+      <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+    </p>
+  </form>
+
+</div>

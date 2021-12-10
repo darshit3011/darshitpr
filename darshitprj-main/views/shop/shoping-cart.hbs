@@ -1,0 +1,153 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand text-danger">E-Farming Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+   
+            </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mj "  >
+   
+      <li >
+
+                <li >
+          {{#if login}}
+               
+            {{else}}
+              <li class="nav-item active">
+             <a class="nav-link" href="/admin/login">Admin Account</a>
+          </li> 
+          {{/if}}
+                          
+
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-user"></i> User Accounts
+          </a>
+
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {{#if login}}
+               <a class="dropdown-item" href="/user/profile">User Account</a>
+              <a class="dropdown-item" href="/user/logout">Logout</a>
+            {{else}}
+              <a class="dropdown-item" href="/user/signin">signin</a>
+              <a class="dropdown-item" href="/user/signup">signup</a>
+            {{/if}}
+            
+      </li>
+      <li><a href="/cart" class="nav-link text-dark"> <i class="fas fa-shopping-cart text-dark"> </i> Shoping Cart <span class="badge badge-dark">{{session.cart.totalQty}}</span></a>
+      </li>
+    </ul>
+    </form>
+  </div>
+</nav>
+{{!--
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
+
+<style>
+   .col-md-4 {
+      padding: 4px;
+   }
+
+   .hr {
+      shadow: 0px 5px;
+   }
+
+   img {
+      max-height: 200px;
+   }
+
+   .card {
+      border: 0px;
+   }
+
+   .btn-dark {
+      background-color: orange;
+
+   }
+
+   #btns {
+      margin-right: 30px;
+      width: 170px;
+      background-color: #fa9600;
+      height: 50px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      border: none;
+   }
+</style>
+
+<div class="container-fluid">
+   {{#if items}}
+   <div class="row justify-content-center">
+
+      <div class="col-md-7 mt-1" style="background-color: rgb(255, 255, 255);">
+         {{#each items}}
+         <div class="row">
+
+            {{#each this}}
+            <div class="col-md-4">
+               <div class="card">
+                  <img class="card-img-top" src="/uploads/{{this.item.image}}" alt="Card image cap">
+                  <div class="card-body">
+                     <h5 class="card-title">{{this.item.title}}</h5>
+                     <p class="card-text">{{this.price}}</p>
+                      <a class="btn btn-info btn-sm" href="/reduce/{{this.item._id}}">Reduce By 1</a>  <a class="text-dark" href="/remove/{{this.item._id}}"><b>Remove</b></a> 
+                     
+                  </div>
+               </div>
+            </div>
+            {{/each}}
+
+         </div>
+         {{/each}}
+         <div class="hr">
+            <hr>
+         </div>
+         <div class="row justify-content-end">
+            <a id="btns" href="/checkout" class="btn btn-primary">CHECKOUT</a>
+         </div>
+      </div>
+
+      <div class="col-md-4 mx-2" style="background-color:rgb(255, 255, 255);max-height: 250px ;padding: 8px;">
+         <h6 width="100%">Price Detail</h6>
+         <hr>
+         <table style="width: 100%;">
+            <tr>
+               <td>Total Price</td>
+               <td id="tprice">{{qty}}</td>
+            </tr>
+         </table>
+
+      </div>
+
+
+   </div>
+   {{else}}
+   <div class="row justify-content-center mt-4">
+      <div class="col-md-11" style="background-color:white;min-height:450px;">
+         <h4>My Cart</h4>
+         <div class="text-center mt-4">
+
+            <img src="images/noitem.png" alt="">
+            <h4>Missing Cart Items?</h4>
+            <p>Add some items</p><a href="/">Shop Now</a>
+            
+
+         </div>
+      </div>
+   </div>
+   {{/if}}
+
+
+</div>

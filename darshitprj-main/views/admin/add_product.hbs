@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand text-danger">E-Farming Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/admin/add_product">Add Products <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/admin/product">Products <span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mj ">
+
+
+        </li>
+      </ul>
+    </form>
+  </div>
+</nav>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>E-Farming Store</title>
+</head>
+
+<body>
+
+  <h1 style="text-align: center;">Add Product</h1>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  {{!--
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script> --}}
+  <form role="form" action="addproduct" method="POST"  enctype="multipart/form-data" >
+    <div class="container">
+      <div>
+        <label for="firstname">Product Name</label>
+        <input type="text" autocomplete="off" class="form-control" name="title" placeholder="Enter first name">
+      </div>
+
+      <div>
+        <label for="lastname">Description</label>
+        <input type="text" autocomplete="off" class="form-control" name="descreption" placeholder="Enter last name">
+      </div>
+
+      <div>
+        <label for="price">Price</label>
+        <input type="price" autocomplete="off" class="form-control" name="price" placeholder="Enter price">
+      </div>
+      
+     
+      <div>
+        <label for="file">photo</label>
+        <input type="file" autocomplete="off" class="form-control" name="photo">
+      </div>
+
+      <div><br>
+      </div>
+ 
+      <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+ 
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand text-danger">E-Farming Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+   
+            </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mj "  >
+   
+      <li >
+
+          <li class="nav-item active">
+             <a class="nav-link" href="/admin/login">Admin Account</a>
+          </li>          
+
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-user"></i> User Accounts
+          </a>
+
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {{#if login}}
+               <a class="dropdown-item" href="/user/profile">User Account</a>
+              <a class="dropdown-item" href="/user/logout">Logout</a>
+            {{else}}
+              <a class="dropdown-item" href="/user/signin">signin</a>
+              <a class="dropdown-item" href="/user/signup">signup</a>
+            {{/if}}
+            
+      </li>
+      <li><a href="/cart" class="nav-link text-dark"> <i class="fas fa-shopping-cart text-dark"> </i> Shoping Cart <span class="badge badge-dark">{{session.cart.totalQty}}</span></a>
+      </li>
+    </ul>
+    </form>
+  </div>
+</nav>
+
+<div class="row " style="min-height: 70vh;">
+
+     
+      
+ 
+    <div class="col-md-4   my-auto mx-auto  ">
+        <div class="row  ">
+            <h1 class="text-center">Sign Up</h1>
+        </div>
+       {{#if msg}}
+        <div class="row justify-content-center  mr-2 ml-2">
+
+            <div class="alert alert-danger col-md-12" role="alert">
+               {{msg}}
+            </div>
+
+        </div>
+        {{/if}}
+        {{#if msg1}}
+        <div class="row justify-content-center  mr-2 ml-2">
+
+            <div class="alert alert-danger col-md-12" role="alert">
+               {{msg1}}
+            </div>
+
+        </div>
+        {{/if}}
+
+
+        <form action="/user/singup" method="POST" class="mt-2">
+            <div class="form-group">
+                <form>
+    <div class="container">
+    <div class="form-group">
+    <label for="fname">First Name</label>
+    <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp" placeholder="Enter first name">
+  </div>
+
+  <div>
+    <label for="lname">Last Name</label>
+    <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter last name">
+  </div>
+
+  <div>
+                <label for="exampleInputEmail1">Email address</label>
+
+                <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+  </div>
+
+  <div>
+    <label for="phone">Phone No.</label>
+    <input type="number" class="form-control" id="phone" name="phone" min="1000000000" max="9999999999" aria-describedby="emailHelp" placeholder="Enter phone no">
+  </div>
+
+<div>
+    <label for="gender">Gender</label><br>
+    <input type="radio" id="gender" name="gender" value="male">Male </input> &nbsp;
+    <input type="radio" id="gender" name="gender" value="female">Female </input>
+  </div>
+<br>
+  <div>
+    <label for="Age">Age</label>
+    <input type="number" class="form-control" id="Age" name="Age" min="1" max="" placeholder="Enter age">
+  </div>
+
+  <div>
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+  </div>
+  <div><br>
+
+
+            </div>
+            <div class="form-group">
+
+            </div>
+
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div><button type="submit" class="btn btn-primary  ">signup</button></div>
+
+        </form>
+
+    </div>
+</div>
